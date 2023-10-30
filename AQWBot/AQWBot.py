@@ -1,70 +1,59 @@
 import random
 import time
 import pyautogui, pygetwindow
+import win32gui, win32con
 
-# Print the list of window titles
-target_window = pygetwindow.getWindowsWithTitle("")[8]
+for i in range(2):
+    print(f"{3-i} seconds to get the window")
+    time.sleep(1)
+    
+# Get the active window handle
+active_window = pygetwindow.getActiveWindow()
+active_window_handle = active_window._hWnd
 
-#while True:
-#    cursor_x, cursor_y = pyautogui.position()
-#    relative_x = cursor_x - target_window.left
-#    relative_y = cursor_y - target_window.top
-#
-#    print(f"Cursor position relative to AQW: ({relative_x}, {relative_y})")
-#
-#    # Add a delay to avoid high CPU usage
-#    time.sleep(1)
-print("Press Ctrl+C to finish bot\n\n")
-time.sleep(2)
-screen_width=3440;
-y_coord=570
-skill_xcoords={
-    "skill1":470+screen_width,
-    "skill2":520+screen_width,
-    "skill3":565+screen_width,
-    "skill4":610+screen_width,  
+
+skill_keys={
+    "auto":'1',
+    "skill1":'2',
+    "skill2":'3',
+    "skill3":'4',
+    "skill4":'5',  
       }
-skill_cooldowns={
-    "skill1":3,
-    "skill2":2.5,
-    #"skill3":6,
-    #"skill4":12,
-    }
 
-states={
-    1:"Idle",
-    2:"Running",
-    3:"Finished"
+# Change skill cooldown's and priority here
+skill_cooldowns={
+    #"skill3":14,
+    #"skill4":10,
+    "skill2":2,
+    "skill1":2.5,
     }
 # Dictionary to store the timestamps when each skill was last used
 last_used_timestamps = {skill: 0 for skill in skill_cooldowns}
-while True:
-    
-    try:
-        while True:
-            current_time=time.time()
-            # Check skill cooldowns
-            skillused=False
-            for skill, cooldown in skill_cooldowns.items():
-                last_used_time = last_used_timestamps[skill]
-                time_elapsed = current_time - last_used_time
-                if time_elapsed >= cooldown:
-                    # Skill cooldown is off; simulate keypress (you'll need to replace these with actual keypresses)
-                    if skillused:
-                        break
-                    skillused=True
-                    # Simulate a keypress or mouse click to activate the skill
-                    # Replace the following line with code to press the appropriate keys
-                    # Example: pyautogui.press("1") for Skill1
-                    x_cord=skill_xcoords[skill]
-                    print(f"Using {skill} at coords: x={x_cord},y={y_coord}")
-                    pyautogui.click(x=x_cord, y=y_coord)  # move to skill coordinates then click the left mouse button.
-                    time.sleep(random.uniform(0.1, 0.5))  # Introduce a small delay to simulate human input
-
-                    # Update the last used timestamp for the skill
-                    last_used_timestamps[skill] = current_time
-    
-            # Sleep for a short interval to reduce CPU usage
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print('Bot finished')
+try:
+    while True:
+        current_time=time.time()
+        # Check skill cooldowns
+        skillused=False
+        for skill, cooldown in skill_cooldowns.items():
+            last_used_time = last_used_timestamps[skill]
+            time_elapsed = current_time - last_used_time
+            if time_elapsed >= cooldown:
+                # Skill cooldown is off; simulate keypress (you'll need to replace these with actual keypresses)
+                if skillused:
+                    break
+                skillused=True
+                # Simulate a keypress or mouse click to activate the skill
+                # Replace the following line with code to press the appropriate keys
+                print(f"Using {skill}")
+                #pyautogui.press(skill_keys[skill])
+                win32gui.SetActiveWindow(active_window_handle)
+                win32gui.PostMessage(active_window_handle, win32con.WM_KEYDOWN, ord(skill_keys[skill]), 0)
+                win32gui.PostMessage(active_window_handle, win32con.WM_KEYUP, ord(skill_keys[skill]), 0)
+                time.sleep(random.uniform(0.1, 0.5))  # Introduce a small delay to simulate human input
+                # Update the last used timestamp for the skill
+                last_used_timestamps[skill] = current_time
+                
+        # Sleep for a short interval to reduce CPU usage
+        time.sleep(1)
+except KeyboardInterrupt:
+    print('Bot finished')
