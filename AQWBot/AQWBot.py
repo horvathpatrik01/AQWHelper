@@ -21,16 +21,43 @@ skill_keys={
       }
 
 # Change skill cooldown's and priority here
-skill_cooldowns={
-    #"skill3":14,
+#skill_cooldowns={
+#    "skill4":9,
+ #   "skill2":3,
+  #  "skill3":3,
+   # "skill1":3,
+    #}
+
+# archmage solo farm
+archmage_skill_cooldowns={
+    "skill3":2.5,
     #"skill4":10,
-    "skill2":2,
+    "skill2":2.5,
     "skill1":2.5,
     }
+
+# vhl solo farm
+vhl_skill_cooldowns={
+    "skill4":9,
+    "skill2":3,
+    "skill3":3,
+    "skill1":3,
+    }
+
+# loo solo farm
+loo_skill_cooldowns={
+    "skill4":2,
+    "skill3":5,
+    "skill2":7,
+    "skill1":5,
+    }
+
+skill_cooldowns=archmage_skill_cooldowns
 # Dictionary to store the timestamps when each skill was last used
 last_used_timestamps = {skill: 0 for skill in skill_cooldowns}
 try:
     while True:
+        
         current_time=time.time()
         # Check skill cooldowns
         skillused=False
