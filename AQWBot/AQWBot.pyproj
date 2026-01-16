@@ -4,14 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>47a6f674-4a30-4c25-b419-873f3b966c82</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>AQWBot.py</StartupFile>
+    <StartupFile>AqwBot_UI.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>AQWBot</Name>
     <RootNamespace>AQWBot</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.13</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,10 +23,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AQWBot.py" />
+    <Compile Include="AqwBot_UI.py" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.11" />
-    <InterpreterReference Include="Global|VisualStudio|PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0" />
+    <InterpreterReference Include="Global|PythonCore|3.13" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
