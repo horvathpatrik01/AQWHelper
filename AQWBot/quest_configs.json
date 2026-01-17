@@ -1,0 +1,40 @@
+{
+    "Default Quest": {
+        "interval_minutes": 2.0,
+        "coordinates": [
+            [
+                360,
+                340
+            ],
+            [
+                385,
+                920
+            ],
+            [
+                1085,
+                610
+            ],
+            [
+                850,
+                700
+            ]
+        ]
+    },
+    "TotemOfNulgath": {
+        "interval_minutes": 2.0,
+        "coordinates": [
+            [
+                223,
+                296
+            ],
+            [
+                237,
+                566
+            ],
+            [
+                293,
+                732
+            ]
+        ]
+    }
+}
