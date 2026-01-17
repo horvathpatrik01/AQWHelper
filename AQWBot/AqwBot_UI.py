@@ -29,7 +29,7 @@ SKILL_KEYS = {
 SKILL_CONFIGS = {
     "Archmage": {"skill2": 2.5, "skill1": 2.5},
     "VHL": {"skill4": 9, "skill2": 3, "skill3": 3, "skill1": 3},
-    "LOO": {"skill4": 2, "skill3": 5, "skill2": 7, "skill1": 5},
+    "LOO": {"skill4": 4,"auto":2, "skill3": 5, "skill2": 7, "skill1": 5},
 }
 
 class AQWBotApp:
