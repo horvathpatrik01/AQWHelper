@@ -1,0 +1,90 @@
+{
+    "Archmage": {
+        "auto": {
+            "cd": 2.5,
+            "use": false
+        },
+        "skill1": {
+            "cd": 2.5,
+            "use": true
+        },
+        "skill2": {
+            "cd": 2.5,
+            "use": true
+        },
+        "skill3": {
+            "cd": 2.5,
+            "use": false
+        },
+        "skill4": {
+            "cd": 2.5,
+            "use": false
+        }
+    },
+    "VHL": {
+        "auto": {
+            "cd": 2.0,
+            "use": false
+        },
+        "skill1": {
+            "cd": 3.0,
+            "use": true
+        },
+        "skill2": {
+            "cd": 3.0,
+            "use": true
+        },
+        "skill3": {
+            "cd": 3.0,
+            "use": true
+        },
+        "skill4": {
+            "cd": 9.0,
+            "use": true
+        }
+    },
+    "Revenant": {
+        "auto": {
+            "cd": 2.0,
+            "use": false
+        },
+        "skill1": {
+            "cd": 4.0,
+            "use": true
+        },
+        "skill2": {
+            "cd": 4.0,
+            "use": true
+        },
+        "skill3": {
+            "cd": 4.0,
+            "use": true
+        },
+        "skill4": {
+            "cd": 9.0,
+            "use": true
+        }
+    },
+    "LOO": {
+        "auto": {
+            "cd": 2.0,
+            "use": true
+        },
+        "skill1": {
+            "cd": 5.0,
+            "use": false
+        },
+        "skill2": {
+            "cd": 7.0,
+            "use": false
+        },
+        "skill3": {
+            "cd": 5.0,
+            "use": true
+        },
+        "skill4": {
+            "cd": 4.0,
+            "use": true
+        }
+    }
+}

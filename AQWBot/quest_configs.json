@@ -1,6 +1,6 @@
 {
     "Default Quest": {
-        "interval_minutes": 2.0,
+        "interval_minutes": 0.5,
         "coordinates": [
             [
                 360,
@@ -24,16 +24,8 @@
         "interval_minutes": 2.0,
         "coordinates": [
             [
-                297,
-                264
-            ],
-            [
-                278,
-                582
-            ],
-            [
-                318,
-                754
+                264,
+                313
             ]
         ]
     }
