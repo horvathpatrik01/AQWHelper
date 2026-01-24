@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>47a6f674-4a30-4c25-b419-873f3b966c82</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>AqwBot_UI.py</StartupFile>
+    <StartupFile>AQWBot_v2.0.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,9 +25,19 @@
   <ItemGroup>
     <Compile Include="AQWBot.py" />
     <Compile Include="AqwBot_UI.py" />
+    <Compile Include="BotModules\aqw_config.py" />
+    <Compile Include="BotModules\bot_engine.py" />
+    <Compile Include="BotModules\ui_utils.py" />
+    <Compile Include="BotModules\window_manager.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BotModules\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AQWBot_v2.0.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

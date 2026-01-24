@@ -612,7 +612,7 @@ class AQWBotApp:
                         self.perform_quest_turn_in()
                         self.last_quest_time = time.time()
 
-                time.sleep(0.5)
+                time.sleep(0.8)
                 
             except Exception as e:
                 self.log(f"Loop Error: {e}")

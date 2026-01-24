@@ -1,24 +1,24 @@
 {
     "Archmage": {
         "auto": {
-            "cd": 2.5,
-            "use": false
+            "use": false,
+            "cd": 2.5
         },
         "skill1": {
-            "cd": 2.5,
-            "use": true
+            "use": false,
+            "cd": 2.5
         },
         "skill2": {
-            "cd": 2.5,
-            "use": true
+            "use": true,
+            "cd": 1.5
         },
         "skill3": {
-            "cd": 2.5,
-            "use": false
+            "use": false,
+            "cd": 2.5
         },
         "skill4": {
-            "cd": 2.5,
-            "use": false
+            "use": false,
+            "cd": 2.5
         }
     },
     "VHL": {
@@ -72,11 +72,11 @@
         },
         "skill1": {
             "cd": 5.0,
-            "use": false
+            "use": true
         },
         "skill2": {
             "cd": 7.0,
-            "use": false
+            "use": true
         },
         "skill3": {
             "cd": 5.0,
@@ -85,6 +85,72 @@
         "skill4": {
             "cd": 4.0,
             "use": true
+        }
+    },
+    "KE": {
+        "auto": {
+            "cd": 2.5,
+            "use": false
+        },
+        "skill1": {
+            "cd": 3.0,
+            "use": true
+        },
+        "skill2": {
+            "cd": 2.0,
+            "use": true
+        },
+        "skill3": {
+            "cd": 8.0,
+            "use": true
+        },
+        "skill4": {
+            "cd": 10.0,
+            "use": true
+        }
+    },
+    "VDK": {
+        "auto": {
+            "cd": 2.5,
+            "use": false
+        },
+        "skill1": {
+            "cd": 4.0,
+            "use": true
+        },
+        "skill2": {
+            "cd": 4.0,
+            "use": true
+        },
+        "skill3": {
+            "cd": 4.0,
+            "use": true
+        },
+        "skill4": {
+            "cd": 10.0,
+            "use": true
+        }
+    },
+    "ArchFiend": {
+        "auto": {
+            "use": false,
+            "cd": 2.5
+        },
+        "skill1": {
+            "use": true,
+            "cd": 2.5
+        },
+        "skill2": {
+            "use": true,
+            "cd": 2.5
+        },
+        "skill3": {
+            "use": true,
+            "cd": 15.0
+        },
+        "skill4": {
+            "use": false,
+            "cd": 2.5
         }
     }
 }
