@@ -12,7 +12,7 @@ from BotModules.ui_utils import SnippingTool
 class AQWBotApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("AQW Bot v2.1 Text detection")
+        self.root.title("AQW Bot v2.2 (Priority Queues)")
         self.root.geometry("700x780")
         
         # --- Modules ---
@@ -109,15 +109,29 @@ class AQWBotApp:
         self.class_vars = {}
         grid = tk.Frame(f, pady=10); grid.pack(fill="x")
         
-        for i, skill in enumerate(REQUIRED_SKILLS):
-            tk.Label(grid, text=skill).grid(row=i, column=0)
-            use = tk.BooleanVar(value=True)
-            tk.Checkbutton(grid, variable=use).grid(row=i, column=1)
-            cd = tk.DoubleVar(value=2.5)
-            tk.Entry(grid, textvariable=cd, width=5).grid(row=i, column=2)
-            self.class_vars[skill] = {"use": use, "cd": cd}
+        # Headers
+        tk.Label(grid, text="Skill", font=("Arial", 9, "bold")).grid(row=0, column=0, padx=5)
+        tk.Label(grid, text="Use", font=("Arial", 9, "bold")).grid(row=0, column=1, padx=5)
+        tk.Label(grid, text="CD (s)", font=("Arial", 9, "bold")).grid(row=0, column=2, padx=5)
+        tk.Label(grid, text="Priority", font=("Arial", 9, "bold")).grid(row=0, column=3, padx=5)
         
-        tk.Button(f, text="Save", command=self.save_class).pack(fill="x", pady=10)
+        for i, skill in enumerate(REQUIRED_SKILLS):
+            row = i + 1
+            tk.Label(grid, text=skill).grid(row=row, column=0)
+            
+            use = tk.BooleanVar(value=True)
+            tk.Checkbutton(grid, variable=use).grid(row=row, column=1)
+            
+            cd = tk.DoubleVar(value=2.5)
+            tk.Entry(grid, textvariable=cd, width=5).grid(row=row, column=2)
+            
+            # Priority Entry
+            prio = tk.IntVar(value=i+1)
+            tk.Entry(grid, textvariable=prio, width=5).grid(row=row, column=3)
+            
+            self.class_vars[skill] = {"use": use, "cd": cd, "prio": prio}
+        
+        tk.Button(f, text="Save Class Changes", command=self.save_class).pack(fill="x", pady=10)
         if self.class_data: self.cb_edit_class.current(0); self.load_class_data()
 
     def ui_loc_tab(self):
@@ -274,7 +288,9 @@ class AQWBotApp:
         cname = self.cb_class.get()
         qname = self.cb_quest.get()
         
-        self.bot.active_class_config = self.class_data[cname]
+        raw_class_config = self.class_data[cname]
+        self.bot.active_skills = self.prepare_active_skills(raw_class_config)
+
         self.bot.active_quest_config = self.quest_data[qname]
         self.bot.enable_quests = self.var_q_en.get()
         self.bot.enable_drops = self.var_d_en.get()
@@ -292,15 +308,29 @@ class AQWBotApp:
     def load_class_data(self, e=None):
         data = self.class_data[self.cb_edit_class.get()]
         for k, v in self.class_vars.items():
-            v["use"].set(data[k]["use"])
-            v["cd"].set(data[k]["cd"])
+            skill_data = data.get(k, {})
+            v["use"].set(skill_data.get("use", True))
+            v["cd"].set(skill_data.get("cd", 2.5))
+            v["prio"].set(skill_data.get("priority", 1))
 
     def save_class(self):
         name = self.cb_edit_class.get()
-        new_d = {k: {"use": v["use"].get(), "cd": v["cd"].get()} for k,v in self.class_vars.items()}
+        new_d = {}
+        for k,v in self.class_vars.items():
+            new_d[k] = {
+                "use": v["use"].get(), 
+                "cd": v["cd"].get(),
+                "priority": v["prio"].get()
+            }
         self.class_data[name] = new_d
         self.cfg.save_json(CLASS_CONFIG_FILE, self.class_data)
-        self.log("Class Saved")
+        
+        # --- NEW: Update bot immediately if running this class ---
+        if self.bot.running and self.cb_class.get() == name:
+            self.bot.active_skills = self.prepare_active_skills(new_d)
+            self.log(f"Class '{name}' updated live.")
+        else:
+            self.log("Class Saved")
 
     def add_class(self):
         n = simpledialog.askstring("New", "Name:")
@@ -394,6 +424,19 @@ class AQWBotApp:
         if sel:
             del self.quest_data[self.cb_edit_quest.get()]["coordinates"][sel[0]]
             self.load_quest_data()
+
+    # --- Helper to Sort Skills (Moved logic here) ---
+    def prepare_active_skills(self, class_data):
+        """Filters enabled skills and sorts them by priority."""
+        active_skills = []
+        for s_name in REQUIRED_SKILLS:
+            cfg = class_data.get(s_name, {})
+            if cfg.get("use", True):
+                active_skills.append((s_name, cfg))
+        
+        # Sort by Priority (Lower number = First)
+        active_skills.sort(key=lambda x: x[1].get("priority", 99))
+        return active_skills
 
 if __name__ == "__main__":
     root = tk.Tk()

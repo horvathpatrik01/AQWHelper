@@ -17,6 +17,8 @@ class BotEngine:
         self.last_skill_timestamps = {k:0 for k in REQUIRED_SKILLS}
         self.last_quest_time = 0
         self.last_drop_scan = 0
+
+        self.active_skills = []
         
         # Current active configs (set by main.py)
         self.active_class_config = {}
@@ -41,21 +43,21 @@ class BotEngine:
 
     def loop(self):
         while self.running:
+            
             try:
                 now = time.time()
-                
+                self.skill_pressed = False
                 # 1. Skills
-                for skill_name in REQUIRED_SKILLS:
+                for skill_name, cfg in self.active_skills:
                     if not self.running: break
-                    cfg = self.active_class_config.get(skill_name, {})
-                    if not cfg.get("use", True): continue
                     
                     if now - self.last_skill_timestamps.get(skill_name, 0) >= cfg.get("cd", 2.5):
                         if skill_name in self.skill_locations:
                             loc = self.skill_locations[skill_name]
                             self.wm.send_background_click(loc[0], loc[1])
                             self.last_skill_timestamps[skill_name] = now
-                            self.log(f"Skill: {skill_name}")
+                            #self.log(f"Skill: {skill_name}")
+                            self.skill_pressed = True
                             break
                 
                 # 2. Drops
@@ -70,7 +72,10 @@ class BotEngine:
                         self.run_quest_turnin()
                         self.last_quest_time = time.time()
 
-                time.sleep(0.8)
+                if self.skill_pressed == True:
+                    time.sleep(0.8)
+                else :
+                    time.sleep(0.1)
             except Exception as e:
                 self.log(f"Error in loop: {e}")
                 self.stop()

@@ -24,18 +24,18 @@ DEFAULT_QUESTS = {
 
 DEFAULT_CLASSES = {
     "Archmage": {
-        "auto": {"cd": 2.5, "use": False},
-        "skill1": {"cd": 2.5, "use": True},
-        "skill2": {"cd": 2.5, "use": True},
-        "skill3": {"cd": 2.5, "use": True},
-        "skill4": {"cd": 2.5, "use": True}
+        "auto": {"cd": 2.5, "use": False,"priority": 3},
+        "skill1": {"cd": 2.5, "use": True,"priority": 1},
+        "skill2": {"cd": 2.5, "use": True,"priority": 0},
+        "skill3": {"cd": 2.5, "use": True,"priority": 2},
+        "skill4": {"cd": 2.5, "use": True,"priority": 4}
     },
     "VHL": {
-        "auto": {"cd": 2.0, "use": True},
-        "skill1": {"cd": 3.0, "use": True},
-        "skill2": {"cd": 3.0, "use": True},
-        "skill3": {"cd": 3.0, "use": True},
-        "skill4": {"cd": 9.0, "use": True}
+        "auto": {"cd": 2.0, "use": True,"priority": 1},
+        "skill1": {"cd": 3.0, "use": True,"priority": 2},
+        "skill2": {"cd": 3.0, "use": True,"priority":3},
+        "skill3": {"cd": 3.0, "use": True,"priority": 4},
+        "skill4": {"cd": 9.0, "use": True,"priority": 5}
     }
 }
 
