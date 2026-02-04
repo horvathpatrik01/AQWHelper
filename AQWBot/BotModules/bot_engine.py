@@ -142,7 +142,8 @@ class BotEngine:
             time.sleep(0.1)
 
         except Exception as e:
-            self.log(f"Drop Scan Error: {e}")
+            self.wm.send_background_click(dec[0], dec[1])
+            self.log(f"Trashed Unknown (Var:{int(variance)})")
             pass
 
     def run_quest_turnin(self):

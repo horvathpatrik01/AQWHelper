@@ -28,46 +28,56 @@
     },
     "VHL": {
         "auto": {
+            "use": true,
             "cd": 2.0,
-            "use": false
+            "priority": 4
         },
         "skill1": {
+            "use": true,
             "cd": 3.0,
-            "use": true
+            "priority": 3
         },
         "skill2": {
+            "use": true,
             "cd": 3.0,
-            "use": true
+            "priority": 2
         },
         "skill3": {
+            "use": true,
             "cd": 3.0,
-            "use": true
+            "priority": 3
         },
         "skill4": {
+            "use": true,
             "cd": 9.0,
-            "use": true
+            "priority": 1
         }
     },
     "Revenant": {
         "auto": {
+            "use": false,
             "cd": 2.0,
-            "use": false
+            "priority": 1
         },
         "skill1": {
+            "use": true,
             "cd": 4.0,
-            "use": true
+            "priority": 2
         },
         "skill2": {
+            "use": true,
             "cd": 4.0,
-            "use": true
+            "priority": 2
         },
         "skill3": {
+            "use": true,
             "cd": 4.0,
-            "use": true
+            "priority": 1
         },
         "skill4": {
+            "use": true,
             "cd": 9.0,
-            "use": true
+            "priority": 1
         }
     },
     "LOO": {
@@ -101,16 +111,16 @@
         "skill1": {
             "use": true,
             "cd": 3.0,
-            "priority": 3
+            "priority": 4
         },
         "skill2": {
             "use": true,
             "cd": 2.0,
-            "priority": 2
+            "priority": 3
         },
         "skill3": {
-            "use": false,
-            "cd": 8.0,
+            "use": true,
+            "cd": 6.0,
             "priority": 2
         },
         "skill4": {
@@ -121,24 +131,29 @@
     },
     "VDK": {
         "auto": {
-            "cd": 2.5,
-            "use": false
+            "use": false,
+            "cd": 5.0,
+            "priority": 2
         },
         "skill1": {
+            "use": true,
             "cd": 4.0,
-            "use": true
+            "priority": 2
         },
         "skill2": {
+            "use": true,
             "cd": 4.0,
-            "use": true
+            "priority": 1
         },
         "skill3": {
+            "use": true,
             "cd": 4.0,
-            "use": true
+            "priority": 3
         },
         "skill4": {
+            "use": true,
             "cd": 10.0,
-            "use": true
+            "priority": 1
         }
     },
     "ArchFiend": {

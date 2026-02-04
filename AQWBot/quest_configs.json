@@ -13,23 +13,23 @@
         ]
     },
     "Nulgath(Supplies)": {
-        "interval_minutes": 3.0,
+        "interval_minutes": 2.4,
         "coordinates": [
             [
-                159,
+                198,
                 156
             ],
             [
-                180,
-                454
+                218,
+                472
             ],
             [
-                546,
-                297
+                618,
+                304
             ],
             [
-                418,
-                342
+                480,
+                356
             ]
         ]
     }
